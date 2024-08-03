@@ -2,36 +2,30 @@
 
 //Task 1
 
-function twoSum (array, target) {
-    //edge case if the target number is not in the array
-    let match;
-    let index;
-    let sum = 0;
-    //checking that the target number is in the array or not 
-    array.forEach((number, i) => {
-        if(number == target) {
-            match = 1;
-            index = i; //taking the index so that I can add the number upto that index
-        }
-    })
+//TwoSum Problem
 
-    if(match) {
-        array.forEach((number, i) => {
-            if(i <= index) {
-                sum += number;//until the index matches it will add the numbers
+function twoSum(array, target) {
+    let indicesArray = [];
+    for(let i = 0; i < array.length; i++) {
+        let firstNumber = array[i]; //defining the firstnumber
+        for(let index = (i + 1); index < array.length; index++) {
+            if(i !== index) {
+                //checking that if I and Index should be different
+                //so that the loop doesnot add a number twide
+
+                if((firstNumber + array[index]) == target) {
+                    indicesArray.push(i);
+                    indicesArray.push(index);
+                    //if it satisfies the target then the number
+                    //is added to the array
+                }
             }
-        })
-        console.log(sum);
-    }
-    else {
-        console.log("The target number is not in the array");
-         //if the target number is not in the index
+        }
     }
 
-   
+    console.log(indicesArray);
 }
+//defining array
+let array = [1, 2, 3, 4, 5]
 
-const array1 = [1, 2, 3, 4, 5, 6, 7];
-
-twoSum(array1, 4)//OutPut Expected 10;
-
+twoSum(array, 5);
